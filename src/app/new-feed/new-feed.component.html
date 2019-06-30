@@ -1,0 +1,14 @@
+<mat-card *ngIf="show">
+    <mat-card-title>New Feed</mat-card-title>
+
+    <mat-card-content>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="newFeed.name" placeholder="Feed Name"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="newFeed.address" placeholder="Feed Address"/>
+            </mat-form-field>
+            <button mat-button color="primary" (click)="create(newFeed)">Save</button>
+            <button mat-button color="secondary" (click)="cancel()">Cancel</button>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,15 @@
+<div *ngIf="feeds">
+<app-new-feed [show]="showNewFeed" (feedAdded)="onFeedAdded($event)" (feedAddCanceled)="onFeedAddCanceled()"></app-new-feed>
+<mat-list>
+    <mat-list-item 
+        *ngFor="let feed of feeds">
+        <span (click)="onSelect(feed)">{{ feed.name }} ({{ feed.address }})</span>
+        <button mat-icon-button (click)="delete(feed)"><mat-icon >delete_forever</mat-icon></button>
+    </mat-list-item>
+</mat-list>
+<button mat-fab color="primary" (click)="onNewFeed()"><mat-icon>add</mat-icon></button>
+</div>
+<div *ngIf="!feeds">
+    <p>No feeds</p>
+</div>
+<app-feed-detail [feed]="selectedFeed"></app-feed-detail>

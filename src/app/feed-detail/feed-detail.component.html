@@ -1,0 +1,12 @@
+<article *ngIf="feed">
+    <header>
+        <h2>{{feed.name | uppercase}} Details</h2>
+    </header>
+    
+    <div>
+      <label>source:
+        <input [(ngModel)]="feed.address" placeholder="feed address"/>
+      </label>
+    </div>
+  
+</article>
