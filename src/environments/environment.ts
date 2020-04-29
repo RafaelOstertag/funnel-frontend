@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  feedUrl: "http://localhost:8080/feeds"
+    production: false,
+    feedUrl: "http://funnel.guengel.ch/rest/feeds",
+    sso: {
+        url: "https://sso.guengel.ch/auth",
+        realm: "guengel.ch",
+        clientId: "funnel-client"
+    }
 };
 
 /*

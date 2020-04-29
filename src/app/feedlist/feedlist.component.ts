@@ -4,48 +4,45 @@ import { Feed } from '../data/feed';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-feedlist',
-  templateUrl: './feedlist.component.html',
-  styleUrls: ['./feedlist.component.scss']
+    selector: 'app-feedlist',
+    templateUrl: './feedlist.component.html',
+    styleUrls: ['./feedlist.component.scss']
 })
 export class FeedlistComponent implements OnInit {
-  public feeds : Feed[]
-  public selectedFeed: Feed;
-  public showNewFeed: boolean = false;
-  
-  constructor(private feedService: FeedService) { }
+    public feeds: Feed[]
+    public selectedFeed: Feed;
+    public showNewFeed: boolean = false;
 
-  ngOnInit() {
-    this.getFeeds()
-    this.feedService.getFeedAddedEventEmitter().pipe(
-        tap(this.onFeedAdded)
-    ).subscribe()
-  }
+    constructor(private feedService: FeedService) { }
 
-  private delete(feed: Feed): void {
-    this.feedService.deleteFeed(feed, () => {
-      this.feeds = this.feeds.filter(f => f.name !== feed.name)
-    }).subscribe()
-  }
+    ngOnInit() {
+        this.getFeeds()
+    }
 
-  private onSelect(feed: Feed): void {
-    this.selectedFeed = feed;
-  }
+    private delete(feed: Feed): void {
+        this.feedService.deleteFeed(feed, () => {
+            this.feeds = this.feeds.filter(f => f.name !== feed.name)
+        }).subscribe()
+    }
 
-  private onFeedAdded(feed: Feed) : void {
-    this.feeds.push(feed);
-    this.showNewFeed = false;
-  }
+    private onSelect(feed: Feed): void {
+        this.selectedFeed = feed;
+    }
 
-  private getFeeds() {
-    this.feedService.getFeeds().subscribe(feeds => this.feeds = feeds);
-  }
+    private onFeedAdded(feed: Feed): void {
+        this.feeds.push(feed);
+        this.showNewFeed = false;
+    }
 
-  public onNewFeed(): void {
-    this.showNewFeed = !this.showNewFeed;
-  }
+    private getFeeds() {
+        this.feedService.getFeeds().subscribe(feeds => this.feeds = feeds);
+    }
 
-  public onFeedAddCanceled(): void {
-      this.showNewFeed = false;
-  }
+    public onNewFeed(): void {
+        this.showNewFeed = !this.showNewFeed;
+    }
+
+    public onFeedAddCanceled(): void {
+        this.showNewFeed = false;
+    }
 }

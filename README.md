@@ -1,1 +1,1 @@
-Funnel Frontend
+Angular Frontend to Funnel
