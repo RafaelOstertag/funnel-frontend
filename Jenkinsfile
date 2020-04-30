@@ -35,7 +35,7 @@ pipeline {
 
         stage('build') {
             steps {
-                sh 'npm build'
+                sh 'npm run-script build'
             }
         }
 
@@ -48,7 +48,7 @@ pipeline {
             }
 
             steps {
-                sh 'tar -C build -cvzf funnel-frontend-${BRANCH_NAME#release/v}.tar.gz .'
+                sh 'tar -C dist/funnel-frontend -cvzf funnel-frontend-${BRANCH_NAME#release/v}.tar.gz .'
 
                 withCredentials([usernameColonPassword(credentialsId: '88f4e173-e719-4ded-b54a-ab4a41546886', variable: 'CREDENTIALS')]) {
                     sh 'curl -k -u "$CREDENTIALS" --upload-file funnel-frontend-${BRANCH_NAME#release/v}.tar.gz "${NEXUS}${REPOSITORY}/${BRANCH_NAME#release/v}/"'
@@ -58,7 +58,7 @@ pipeline {
                     def version = env.BRANCH_NAME - 'release/v'
                     step([$class                 : "RundeckNotifier",
                           includeRundeckLogs     : true,
-                          jobId                  : "73f61ea8-6c26-4226-b3d8-c566d0c0da67 ",
+                          jobId                  : "73f61ea8-6c26-4226-b3d8-c566d0c0da67",
                           options                : "version=$version",
                           rundeckInstance        : "gizmo",
                           shouldFailTheBuild     : true,
