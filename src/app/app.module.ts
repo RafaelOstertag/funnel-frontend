@@ -10,6 +10,7 @@ import { environment } from './../environments/environment';
 import { FeedlistComponent } from './feedlist/feedlist.component';
 import { AddFeedSourceComponent } from './add-feedsource/add-feedsource.component';
 import { FeedDetailsComponent } from './feed-details/feed-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const keycloakService = new KeycloakService();
 
@@ -27,6 +28,7 @@ const keycloakService = new KeycloakService();
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        NgbModule,
     ],
     providers: [
         {

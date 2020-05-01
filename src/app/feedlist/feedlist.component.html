@@ -1,8 +1,10 @@
 <section>
-    <h2>Feeds</h2>
-    <button (click)="addFeedSource()">New Feed</button>
-    <ul *ngIf="feedSources.length > 0">
-        <li *ngFor="let feedSource of feedSources">
+    <header class="clearfix">
+        <h2 class="float-left">Feeds</h2>
+        <button (click)="addFeedSource()" type="button" class="btn btn-primary btn-sm float-right">New Feed</button>
+    </header>
+    <ul *ngIf="feedSources.length > 0" class="list-group">
+        <li *ngFor="let feedSource of feedSources" class="list-group-item">
             <a routerLink="/details/{{ feedSource.name }}">
                 {{ feedSource.name }}</a>
         </li>
