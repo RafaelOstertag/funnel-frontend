@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { Feed } from '../data/feed';
+import { FeedSource } from '../data/feed-source';
+import { FeedDetails } from '../data/feed-details';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-
-import { MessageService } from './message.service';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,46 +16,44 @@ const httpOptions = {
 export class FeedService {
     private feedUrl = environment.feedUrl
 
-    constructor(private httpClient: HttpClient,
-        private messageService: MessageService) { }
+    constructor(private httpClient: HttpClient) { }
 
-    getFeeds(): Observable<Feed[]> {
-        return this.httpClient.get<Feed[]>(this.feedUrl)
+    public getFeedSources(): Observable<FeedSource[]> {
+        return this.httpClient.get<FeedSource[]>(this.feedUrl)
             .pipe(
-                catchError(this.handleError<Feed[]>('getFeeds', []))
+                catchError(this.handleError<FeedSource[]>('getFeeds', []))
             )
     }
 
-    createFeed(feed: Feed, onSuccess = (() => { })): Observable<boolean> {
+    public createFeedSource(feed: FeedSource): Observable<boolean> {
         return this.httpClient.post<void>(this.feedUrl, feed, httpOptions)
             .pipe(
                 catchError(this.handleError<boolean>('create', false)),
-                map(val => val !== false),
-                tap(success => success && onSuccess())
-            )
+                map(val => val !== false))
     }
 
-    deleteFeed(feed: Feed, onSuccess = (() => { })): Observable<boolean> {
-        const name = feed.name;
+    public deleteFeedSource(name: string): Observable<boolean> {
         const url = `${this.feedUrl}/${name}`;
 
         return this.httpClient.delete<void>(url, httpOptions)
             .pipe(
                 catchError(this.handleError<boolean>('delete', false)),
-                map(val => val !== false),
-                tap(success => success && onSuccess())
+                map(val => val !== false)
             )
+    }
+
+    public getFeedDetails(name: String): Observable<FeedDetails> {
+        const url = `${this.feedUrl}/${name}`;
+        return this.httpClient.get<FeedDetails>(url, httpOptions)
+            .pipe(
+                catchError(this.handleError<FeedDetails>('feedDetails', new FeedDetails()))
+            );
     }
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
             console.error(error);
-            this.log(`${operation} failed: ${error.message}`);
             return of(result as T);
         }
-    }
-
-    private log(message: string) {
-        this.messageService.add(`FeedService: ${message}`);
     }
 }

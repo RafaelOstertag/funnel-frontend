@@ -22,9 +22,4 @@ describe('FeedlistComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should render paragraph on empty list', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p')).toBeTruthy();
-  });
 });

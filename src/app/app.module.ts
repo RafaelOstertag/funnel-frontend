@@ -5,13 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FeedlistComponent } from './feedlist/feedlist.component';
-import { FeedDetailComponent } from './feed-detail/feed-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { NewFeedComponent } from './new-feed/new-feed.component';
-import { MaterialModule } from './material/material.module';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { environment } from './../environments/environment';
+import { FeedlistComponent } from './feedlist/feedlist.component';
+import { AddFeedSourceComponent } from './add-feedsource/add-feedsource.component';
+import { FeedDetailsComponent } from './feed-details/feed-details.component';
 
 const keycloakService = new KeycloakService();
 
@@ -19,9 +17,8 @@ const keycloakService = new KeycloakService();
     declarations: [
         AppComponent,
         FeedlistComponent,
-        FeedDetailComponent,
-        MessagesComponent,
-        NewFeedComponent
+        AddFeedSourceComponent,
+        FeedDetailsComponent,
     ],
     imports: [
         KeycloakAngularModule,
@@ -30,7 +27,6 @@ const keycloakService = new KeycloakService();
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        MaterialModule
     ],
     providers: [
         {

@@ -1,0 +1,10 @@
+<section>
+    <h2>{{ feedDetails.source.name }}</h2>
+    <span>({{ feedDetails.source.address }})</span>
+    <ul>
+        <li *ngFor="let feed of feedDetails.feed.feedItems">
+            <a href="{{ feed.link }}">{{ feed.title }}</a>
+        </li>
+    </ul>
+    <button (click)="goBack()">Back</button>
+</section>

@@ -1,4 +1,4 @@
-export class Feed {
+export class FeedSource {
     name: string;
     address: string;
 }

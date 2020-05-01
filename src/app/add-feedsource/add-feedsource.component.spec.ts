@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeedDetailComponent } from './feed-detail.component';
+import { AddFeedSourceComponent } from './add-feedsource.component';
 
-describe('FeedDetailComponent', () => {
-  let component: FeedDetailComponent;
-  let fixture: ComponentFixture<FeedDetailComponent>;
+describe('AddFeedSourceComponent', () => {
+  let component: AddFeedSourceComponent;
+  let fixture: ComponentFixture<AddFeedSourceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedDetailComponent ]
+      declarations: [ AddFeedSourceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FeedDetailComponent);
+    fixture = TestBed.createComponent(AddFeedSourceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

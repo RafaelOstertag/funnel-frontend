@@ -1,0 +1,20 @@
+<article>
+    <h2>Add Feed</h2>
+    <div>
+        <label>
+            Name
+            <input id="name" name="nameInput" #nameInput="ngModel" required minlength="4" [(ngModel)]="feedSource.name">
+        </label>
+
+        <label>
+            URL
+            <input id="url" name="urlInput" #urlInput="ngModel" required minlength="4" [(ngModel)]="feedSource.address">
+        </label>
+        <div>
+            <button name="add" (click)="add()" [disabled]='urlInput.invalid || nameInput.invalid'>Add</button>
+        </div>
+        <div>
+            <button name="cancel" (click)="goBack()">Cancel</button>
+        </div>
+    </div>
+</article>
