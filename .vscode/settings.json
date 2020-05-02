@@ -1,9 +1,11 @@
 {
     "files.autoSave": "afterDelay",
     "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/node_modules/**": true
+        "**/.git/**": true,
+        "**/.git/objects/**": false,
+        "**/.git/subtree-cache/**": false,
+        "**/node_modules/**": false,
+        "**/node_modules/*/**": true
     },
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true

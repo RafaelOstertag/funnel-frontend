@@ -10,6 +10,7 @@ export class FeedItem {
 export class Feed {
     id: string;
     title: string;
+    lastUpdated: Date;
     feedItems: FeedItem[];
 }
 

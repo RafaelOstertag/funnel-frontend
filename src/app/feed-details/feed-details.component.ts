@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 })
 export class FeedDetailsComponent implements OnInit {
     feedDetails: FeedDetails;
+    
     constructor(
         private route: ActivatedRoute,
         private feedService: FeedService,
