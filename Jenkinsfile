@@ -17,7 +17,8 @@ pipeline {
     options {
         ansiColor('xterm')
         timestamps()
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '15')
+        disableConcurrentBuilds()
     }
 
     stages {
