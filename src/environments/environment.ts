@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    feedUrl: "http://localhost:8081/feeds",
+    feedUrl: "https://funnel.guengel.ch/rest/feeds",
     sso: {
         url: "https://sso.guengel.ch/auth",
         realm: "guengel.ch",
