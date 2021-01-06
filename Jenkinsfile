@@ -21,12 +21,6 @@ pipeline {
     }
 
     stages {
-        stage('clean') {
-            steps {
-                sh 'rm -rf build node_modules'
-            }
-        }
-
         stage('install packages') {
             steps {
                 sh 'npm install'
