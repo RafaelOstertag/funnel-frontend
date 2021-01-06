@@ -71,7 +71,7 @@ pipeline {
 
 
     post {
-        always {
+        unsucessful {
             mail to: "rafi@guengel.ch",
                     subject: "${JOB_NAME} (${BRANCH_NAME};${env.BUILD_DISPLAY_NAME}) -- ${currentBuild.currentResult}",
                     body: "Refer to ${currentBuild.absoluteUrl}"
