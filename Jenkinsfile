@@ -17,7 +17,8 @@ pipeline {
     options {
         ansiColor('xterm')
         timestamps()
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '15')
+        disableConcurrentBuilds()
     }
 
     stages {
@@ -71,7 +72,7 @@ pipeline {
 
 
     post {
-        always {
+        unsuccessful {
             mail to: "rafi@guengel.ch",
                     subject: "${JOB_NAME} (${BRANCH_NAME};${env.BUILD_DISPLAY_NAME}) -- ${currentBuild.currentResult}",
                     body: "Refer to ${currentBuild.absoluteUrl}"
