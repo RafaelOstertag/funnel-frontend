@@ -1,29 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { FeedService } from '../services/feed.service';
-import { FeedSource } from '../data/feed-source';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FeedService} from '../services/feed.service';
+import {FeedSource} from '../data/feed-source';
+import {Router} from '@angular/router';
 
 @Component({
-    selector: 'app-feedlist',
-    templateUrl: './feedlist.component.html',
-    styleUrls: ['./feedlist.component.scss']
+  selector: 'app-feedlist',
+  templateUrl: './feedlist.component.html',
+  styleUrls: ['./feedlist.component.scss']
 })
 export class FeedlistComponent implements OnInit {
-    feedSources: FeedSource[] = [];
+  feedSources: FeedSource[] = [];
+  loading = false;
 
-    constructor(private feedService: FeedService, private router: Router) { }
+  constructor(private feedService: FeedService, private router: Router) {
+  }
 
-    ngOnInit(): void {
-        this.getFeedSources();
-    }
+  ngOnInit(): void {
+    this.getFeedSources();
+  }
 
-    private getFeedSources(): void {
-        this.feedService
-            .getFeedSources()
-            .subscribe(feedSources => this.feedSources = feedSources);
-    }
+  addFeedSource(): void {
+    this.router.navigate(['/add']);
+  }
 
-    addFeedSource(): void {
-        this.router.navigate(["/add"]);
-    }
+  private getFeedSources(): void {
+    this.loading = true;
+    this.feedService
+      .getFeedSources()
+      .subscribe(feedSources => {
+        this.feedSources = feedSources;
+        this.loading = false;
+      });
+  }
 }

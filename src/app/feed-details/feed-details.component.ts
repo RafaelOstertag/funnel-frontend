@@ -1,48 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { FeedDetails } from '../data/feed-details';
-import { ActivatedRoute } from '@angular/router';
-import { FeedService } from '../services/feed.service';
-import { Location } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {FeedDetails} from '../data/feed-details';
+import {ActivatedRoute} from '@angular/router';
+import {FeedService} from '../services/feed.service';
+import {Location} from '@angular/common';
 
 @Component({
-    selector: 'app-feed-details',
-    templateUrl: './feed-details.component.html',
-    styleUrls: ['./feed-details.component.scss']
+  selector: 'app-feed-details',
+  templateUrl: './feed-details.component.html',
+  styleUrls: ['./feed-details.component.scss']
 })
 export class FeedDetailsComponent implements OnInit {
-    feedDetails: FeedDetails;
-    
-    constructor(
-        private route: ActivatedRoute,
-        private feedService: FeedService,
-        private location: Location) { }
+  feedDetails: FeedDetails;
 
-    ngOnInit(): void {
-        this.getFeedDetails();
-    }
+  constructor(
+    private route: ActivatedRoute,
+    private feedService: FeedService,
+    private location: Location) {
+  }
 
-    getFeedDetails(): void {
-        const name = this.getFeedName();
-        this.feedService.getFeedDetails(name).subscribe(feedDetails => this.feedDetails = feedDetails);
-    }
+  ngOnInit(): void {
+    this.getFeedDetails();
+  }
 
-    deleteFeed(): void {
-        const name = this.getFeedName();
-        this.feedService.deleteFeedSource(name).subscribe(
-            ok => {
-                if (ok) {
-                    this.goBack();
-                }
-            }
-        )
-    }
+  getFeedDetails(): void {
+    const name = this.getFeedName();
+    this.feedService.getFeedDetails(name).subscribe(feedDetails => this.feedDetails = feedDetails);
+  }
 
-    private getFeedName(): string {
-        return this.route.snapshot.paramMap.get('name');
-    }
+  deleteFeed(): void {
+    const name = this.getFeedName();
+    this.feedService.deleteFeedSource(name).subscribe(
+      ok => {
+        if (ok) {
+          this.goBack();
+        }
+      }
+    );
+  }
 
-    goBack(): void {
-        this.location.back();
-    }
+  goBack(): void {
+    this.location.back();
+  }
+
+  private getFeedName(): string {
+    return this.route.snapshot.paramMap.get('name');
+  }
 
 }

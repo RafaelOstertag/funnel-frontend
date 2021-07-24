@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { FeedlistComponent } from './feedlist.component';
+import {FeedlistComponent} from './feedlist.component';
 
 describe('FeedlistComponent', () => {
   let component: FeedlistComponent;
@@ -8,9 +8,9 @@ describe('FeedlistComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedlistComponent ]
+      declarations: [FeedlistComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

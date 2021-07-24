@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { AddFeedSourceComponent } from './add-feedsource.component';
+import {AddFeedSourceComponent} from './add-feedsource.component';
 
 describe('AddFeedSourceComponent', () => {
   let component: AddFeedSourceComponent;
@@ -8,9 +8,9 @@ describe('AddFeedSourceComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddFeedSourceComponent ]
+      declarations: [AddFeedSourceComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

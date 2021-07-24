@@ -1,21 +1,22 @@
 <article>
-    <h2>Add Feed</h2>
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input id="name" name="nameInput" #nameInput="ngModel" required minlength="4" [(ngModel)]="feedSource.name"
-            class="form-control">
-        <small class="form-text text-muted">Name of the Feed.</small>
-    </div>
-    <div class="form-group">
-        <label for="url">URL</label>
-        <input id="url" name="urlInput" #urlInput="ngModel" required minlength="4" [(ngModel)]="feedSource.address"
-            class="form-control">
-        <small class="form-text text-muted">URL to download Feed from.</small>
-    </div>
+  <h2>Add Feed</h2>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #nameInput="ngModel" [(ngModel)]="feedSource.name" class="form-control" id="name" minlength="4" name="nameInput"
+           required>
+    <small class="form-text text-muted">Name of the Feed.</small>
+  </div>
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input #urlInput="ngModel" [(ngModel)]="feedSource.address" class="form-control" id="url" minlength="4" name="urlInput"
+           required>
+    <small class="form-text text-muted">URL to download Feed from.</small>
+  </div>
 
-    <div>
-        <button name="add" (click)="add()" [disabled]='urlInput.invalid || nameInput.invalid'
-            class="btn btn-primary mr-1">Add</button>
-        <button name="cancel" (click)="goBack()" class="btn btn-secondary">Cancel</button>
-    </div>
+  <div>
+    <button (click)="add()" [disabled]='urlInput.invalid || nameInput.invalid' class="btn btn-primary mr-1"
+            name="add">Add
+    </button>
+    <button (click)="goBack()" class="btn btn-secondary" name="cancel">Cancel</button>
+  </div>
 </article>

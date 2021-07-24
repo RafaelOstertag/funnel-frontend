@@ -1,13 +1,14 @@
 <section>
-    <header class="clearfix">
-        <h2 class="float-left">Feeds</h2>
-        <button (click)="addFeedSource()" type="button" class="btn btn-primary btn-sm float-right">New Feed</button>
-    </header>
-    <ul *ngIf="feedSources.length > 0" class="list-group">
-        <li *ngFor="let feedSource of feedSources" class="list-group-item">
-            <a routerLink="/details/{{ feedSource.name }}">
-                {{ feedSource.name }}</a>
-        </li>
-    </ul>
-    <div *ngIf="feedSources.length < 1">No Feeds</div>
+  <header class="clearfix">
+    <h2 class="float-left">Feeds</h2>
+    <button (click)="addFeedSource()" class="btn btn-primary btn-sm float-right" type="button">New Feed</button>
+  </header>
+  <ul *ngIf="feedSources.length > 0 && !loading" class="list-group">
+    <li *ngFor="let feedSource of feedSources" class="list-group-item">
+      <a routerLink="/details/{{ feedSource.name }}">
+        {{ feedSource.name }}</a>
+    </li>
+  </ul>
+  <div *ngIf="feedSources.length < 1 && !loading">No Feeds</div>
+  <div *ngIf="loading">Loading...</div>
 </section>

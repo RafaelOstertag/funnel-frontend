@@ -1,7 +1,7 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
-import { FeedlistComponent } from './feedlist/feedlist.component';
+import {TestBed, waitForAsync} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppComponent} from './app.component';
+import {FeedlistComponent} from './feedlist/feedlist.component';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
