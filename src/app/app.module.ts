@@ -15,28 +15,27 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const keycloakService = new KeycloakService();
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeedlistComponent,
-    AddFeedSourceComponent,
-    FeedDetailsComponent,
-  ],
-  imports: [
-    KeycloakAngularModule,
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    NgbModule,
-  ],
-  providers: [
-    {
-      provide: KeycloakService,
-      useValue: keycloakService
-    }
-  ],
-  entryComponents: [AppComponent]
+    declarations: [
+        AppComponent,
+        FeedlistComponent,
+        AddFeedSourceComponent,
+        FeedDetailsComponent,
+    ],
+    imports: [
+        KeycloakAngularModule,
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        NgbModule,
+    ],
+    providers: [
+        {
+            provide: KeycloakService,
+            useValue: keycloakService
+        }
+    ]
 })
 export class AppModule implements DoBootstrap {
   ngDoBootstrap(appRef: ApplicationRef) {
