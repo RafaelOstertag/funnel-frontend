@@ -6,7 +6,7 @@ pipeline {
   environment {
     // Used for tests, to make Jest running all tests without watcher
     NEXUS = "https://colossus.kruemel.home/nexus/"
-    REPOSITORY = "repository/funnel/funnel-frontend/"
+    REPOSITORY = "repository/funnel/funnel-frontend"
     VERSION = sh returnStdout: true, script: 'jq -r .version package.json | tr -d \'\\n\''
   }
 
@@ -67,7 +67,7 @@ fi
       }
 
       steps {
-        sh 'tar -C dist/funnel-frontend -cvzf funnel-frontend-${BRANCH_NAME#release/v}.tar.gz .'
+        sh 'tar -C dist/funnel-frontend -cvzf funnel-frontend-${VERSION}.tar.gz .'
 
         withCredentials([usernameColonPassword(credentialsId: '88f4e173-e719-4ded-b54a-ab4a41546886', variable: 'CREDENTIALS')]) {
           sh 'curl -k -u "$CREDENTIALS" --upload-file funnel-frontend-${VERSION}.tar.gz "${NEXUS}${REPOSITORY}/${VERSION}/"'
