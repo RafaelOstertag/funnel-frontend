@@ -1,6 +1,6 @@
 {
   "name": "funnel-frontend",
-  "version": "1.0.9-dev",
+  "version": "1.0.9",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
